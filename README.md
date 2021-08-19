@@ -1,1 +1,3 @@
-# SI_Tarea1_ICF222
+# SI Tarea1 ICF222
+## Reversi Game
+----
