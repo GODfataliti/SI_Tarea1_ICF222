@@ -1,6 +1,7 @@
 import pygame
 import numpy as np
 import sys
+import time
 
 
 pygame.init()
@@ -12,6 +13,9 @@ screen = pygame.display.set_mode((height,width))
 bg = 25, 26, 25
 screen.fill(bg)
 
+BLACK = (0,      0,       0)
+WHITE = (255,   255,    255)
+
 
 linebg = (40,250,40)
 
@@ -22,8 +26,14 @@ nxC, nyC = 8, 8
 dimCW = width/nxC
 dimCH = height/nyC
 
-#Estado de las celdas. Vivas = 1; Muertas = 0
+celdai = [36,36]
+
+#Estado de las celdas. Alfa = 1; Beta = 0
 gameState = np.zeros((nxC,nyC))
+
+circleW = (screen, WHITE, [150, 50, 400, 400], 1)
+circleB = (screen, BLACK, [150, 50, 400, 400], 1)
+
 
 while True:
 
@@ -31,6 +41,12 @@ while True:
         #print(event)
         if event.type == pygame.QUIT:
             sys.exit()
+    
+
+
+    pygame.draw.circle(screen, WHITE,celdai ,33, 0)
+    #pygame.draw.circle(Surface, color, pos, radius, width=0)
+
     
     #Dibujar la cuadricula
     for y in range(0,nxC):
@@ -41,5 +57,9 @@ while True:
                     ((x)    * dimCW,    (y+1)   * dimCH)]
             pygame.draw.polygon(screen, linebg, poly, width=1)
     
+
+
+
+
     #Actualizar pantalla
     pygame.display.flip()
