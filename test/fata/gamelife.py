@@ -25,7 +25,8 @@ dimCH = height/nyC
 #Estado de las celdas. Vivas = 1; Muertas = 0
 gameState = np.zeros((nxC,nyC))
 
-#Crear Automata
+#Crear Automata 
+#      ( Fila, Columna)
 gameState[12, 12] = 1
 gameState[13, 13] = 1
 gameState[14, 14] = 1
