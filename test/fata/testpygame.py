@@ -18,9 +18,10 @@ BACKGROUND = (25, 26, 25)
 
 pygame.init()
         #Ancho,Alto
-ancho = 600
-alto = 600
-size = (ancho,alto)
+ancho_v2,alto_v2 = 700, 700
+ancho,alto  = 600, 600
+
+size = (ancho_v2,alto_v2)
 # 440 hacia la derecha(Columnas) 500 hacia abajo(Filas)
 
 nxC, nyC = 6, 6
@@ -79,12 +80,12 @@ clock = pygame.time.Clock()
 #     # -- ZONA DE DIBJO --
 #     pygame.display.flip()
 
-
+margen = (dimCW/2)-(dimCW/2)*0.15
 
 #COORDENADAS X e Y
-coor_x = dimCH/2
-coor_y = dimCH/2
-coor_z = int(((dimCW/2)+(dimCH/2))/2)
+coor_x = dimCH/2 + margen
+coor_y = dimCH/2 + margen
+coor_z = int(((dimCW/2)+(dimCH/2))/2) + margen
 
 print(f'{dimCH} - {dimCW}')
 
@@ -95,12 +96,17 @@ image = pygame.transform.scale(figura_circle, [int(dimCW*0.75),int(dimCH*0.75)])
 #VELOCIDAD DE MOVIMIENTO
 speed_x = 6
 speed_y = 4
-margen = (dimCW/2)-(dimCW/2)*0.15
+
 
 linebg = (40,250,40)
 
 select_x = None
 select_y = None
+
+coord_list = []
+
+grid = [x for x in range(0,ancho_v2,dimCW)]
+print(grid)
 
 while True:
    num_linea = [0,1,2,3,4,5,6]
@@ -112,19 +118,26 @@ while True:
       
       elif event.type == pygame.MOUSEBUTTONDOWN:
          pos = pygame.mouse.get_pos()
-         select_x = pos[0] // 100
-         select_y = pos[1] // 100
-         print(f'{select_x} , {select_y}')
-         pygame.draw.circle(screen, BLACK, ((coor_z+dimCW*num_linea.index(select_x)),(coor_z+dimCW*num_linea.index(select_y))), (margen),width=0)
-
+         #print(pos)
+         select_x = ((pos[0]-(dimCW/2)) // 100)
+         select_y = ((pos[1]-(dimCW/2)) // 100)
+         coord_list.append([select_x,select_y])
+         print(f' {select_x} , {select_y} ')
    
+   #screen.fill(BACKGROUND)   
    for y in range(0,nxC):
         for x in range(0,nyC):
-            poly = [((x)    * dimCW,    y       *dimCH),
-                    ((x+1)  * dimCW,    y       * dimCH),
-                    ((x+1)  * dimCW,    (y+1)   * dimCH),
-                    ((x)    * dimCW,    (y+1)   * dimCH)]
-            pygame.draw.polygon(screen, linebg, poly, width=1)
+            new_poly = []
+            poly = [[(x)    * dimCW,    y       *dimCH],
+                    [(x+1)  * dimCW,    y       * dimCH],
+                    [(x+1)  * dimCW,    (y+1)   * dimCH],
+                    [(x)    * dimCW,    (y+1)   * dimCH]]
+            for value in poly:
+               valor_x = value[0] + margen
+               valor_y = value[1] + margen
+               new_poly.append([valor_x,valor_y])
+
+            pygame.draw.polygon(screen, linebg, new_poly, width=1)
    
    if(coor_x>(ancho-margen) or coor_x<0):
       speed_x *=-1
@@ -133,13 +146,16 @@ while True:
       speed_y *=-1
 
    screen.blit(image, [coor_x,coor_y])
-
-   #AGREGAR FUNCION QUE RETORNE LAS COORDENADAS DEL TABLERO (FILA,COLUMNA)
-   pygame.draw.circle(screen, WHITE, ((coor_z+dimCW*num_linea[2]),(coor_z+dimCW*num_linea[3])), (margen),width=0)
-   pygame.draw.circle(screen, WHITE, ((coor_z+dimCW*num_linea[3]),(coor_z+dimCW*num_linea[2])), (margen),width=0)
+   if(select_x!=None or select_y!=None):
+      for value in coord_list:
+         pygame.draw.circle(screen, WHITE, (((coor_z+dimCW*num_linea.index(value[0]))),((coor_z+dimCW*num_linea.index(value[1])))), (margen),width=0)
    
-   pygame.draw.circle(screen, BLACK, ((coor_z+dimCW*num_linea[2]),(coor_z+dimCW*num_linea[2])), (margen),width=0)
-   pygame.draw.circle(screen, BLACK, ((coor_z+dimCW*num_linea[3]),(coor_z+dimCW*num_linea[3])), (margen),width=0)
+   #AGREGAR FUNCION QUE RETORNE LAS COORDENADAS DEL TABLERO (FILA,COLUMNA)
+   pygame.draw.circle(screen, WHITE, (((coor_z+dimCW*num_linea[0])),((coor_z+dimCW*num_linea[0]))), (margen),width=0)
+   #pygame.draw.circle(screen, WHITE, ((coor_z+dimCW*num_linea[3]),(coor_z+dimCW*num_linea[2])), (margen),width=0)
+   
+   #pygame.draw.circle(screen, BLACK, ((coor_z+dimCW*num_linea[2]),(coor_z+dimCW*num_linea[2])), (margen),width=0)
+   #pygame.draw.circle(screen, BLACK, ((coor_z+dimCW*num_linea[3]),(coor_z+dimCW*num_linea[3])), (margen),width=0)
 
    #pygame.draw.circle(screen, BLACK, ((coor_z+dimCW*num_linea.index(select_x)),(coor_z+dimCW*num_linea.index(select_y))), (margen),width=0)
 
