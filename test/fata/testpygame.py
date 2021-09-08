@@ -1,5 +1,7 @@
 import pygame
 import sys
+import random
+import numpy as np
 import os
 import dotenv
 
@@ -16,12 +18,12 @@ BACKGROUND = (25, 26, 25)
 
 pygame.init()
         #Ancho,Alto
-ancho = 500
-alto = 500
+ancho = 600
+alto = 600
 size = (ancho,alto)
 # 440 hacia la derecha(Columnas) 500 hacia abajo(Filas)
 
-nxC, nyC = 8, 8
+nxC, nyC = 6, 6
 
 #Dimenciones de las celdas
 dimCW = int(ancho/nxC)
@@ -80,23 +82,41 @@ clock = pygame.time.Clock()
 
 
 #COORDENADAS X e Y
-coor_x = 100
-coor_y = 100
+coor_x = dimCH/2
+coor_y = dimCH/2
+coor_z = int(((dimCW/2)+(dimCH/2))/2)
+
+print(f'{dimCH} - {dimCW}')
+
 
 figura_circle = pygame.image.load(r'C:\Users\FATALITI\Desktop\Files\Codigos\SI_Tarea1_ICF222\src\img\hao.png')
-image = pygame.transform.scale(figura_circle, [(dimCW-4),(dimCH-4)])
+image = pygame.transform.scale(figura_circle, [int(dimCW*0.75),int(dimCH*0.75)])
 
 #VELOCIDAD DE MOVIMIENTO
 speed_x = 6
 speed_y = 4
+margen = (dimCW/2)-(dimCW/2)*0.15
 
 linebg = (40,250,40)
 
+select_x = None
+select_y = None
+
 while True:
+   num_linea = [0,1,2,3,4,5,6]
    screen.fill(BACKGROUND)
    for event in pygame.event.get():
+      #print(event)
       if event.type == pygame.QUIT:
          sys.exit()
+      
+      elif event.type == pygame.MOUSEBUTTONDOWN:
+         pos = pygame.mouse.get_pos()
+         select_x = pos[0] // 100
+         select_y = pos[1] // 100
+         print(f'{select_x} , {select_y}')
+         pygame.draw.circle(screen, BLACK, ((coor_z+dimCW*num_linea.index(select_x)),(coor_z+dimCW*num_linea.index(select_y))), (margen),width=0)
+
    
    for y in range(0,nxC):
         for x in range(0,nyC):
@@ -106,19 +126,71 @@ while True:
                     ((x)    * dimCW,    (y+1)   * dimCH)]
             pygame.draw.polygon(screen, linebg, poly, width=1)
    
-   if(coor_x>(ancho-80) or coor_x<0):
+   if(coor_x>(ancho-margen) or coor_x<0):
       speed_x *=-1
    
-   if(coor_y>(alto-80) or coor_y<0):
+   if(coor_y>(alto-margen) or coor_y<0):
       speed_y *=-1
-   
 
    screen.blit(image, [coor_x,coor_y])
+
+   #AGREGAR FUNCION QUE RETORNE LAS COORDENADAS DEL TABLERO (FILA,COLUMNA)
+   pygame.draw.circle(screen, WHITE, ((coor_z+dimCW*num_linea[2]),(coor_z+dimCW*num_linea[3])), (margen),width=0)
+   pygame.draw.circle(screen, WHITE, ((coor_z+dimCW*num_linea[3]),(coor_z+dimCW*num_linea[2])), (margen),width=0)
+   
+   pygame.draw.circle(screen, BLACK, ((coor_z+dimCW*num_linea[2]),(coor_z+dimCW*num_linea[2])), (margen),width=0)
+   pygame.draw.circle(screen, BLACK, ((coor_z+dimCW*num_linea[3]),(coor_z+dimCW*num_linea[3])), (margen),width=0)
+
+   #pygame.draw.circle(screen, BLACK, ((coor_z+dimCW*num_linea.index(select_x)),(coor_z+dimCW*num_linea.index(select_y))), (margen),width=0)
+
+
 
    coor_x += speed_x
    coor_y += speed_y
 
-    #pygame.draw.circle(screen,GREEN,(coor_x, coor_y),15,width=2)
+   #pygame.draw.circle(screen,GREEN,(coor_x, coor_y),15,width=2)
 
    pygame.display.flip()
-   clock.tick(35)
+   clock.tick(40)
+
+
+# #IR LEYENDO LA MATRIZ Y VERIFICAR SI TIENE -1, 0, 1 Y CAMBIANDO 
+# matriz = [[0,0,0,0,0,0,0,0],
+#          [0,0,0,0,0,0,0,0],
+#          [0,0,0,0,0,0,0,0],
+#          [0,0,0,0,0,0,0,0],
+#          [0,0,0,0,0,0,0,0],
+#          [0,0,0,0,0,0,0,0],
+#          [0,0,0,0,0,0,0,0],
+#          [0,0,0,0,0,0,0,0]]
+
+# DIBUJO DE LLUVIA RELLENANDOSE SOLA --------
+# altura_max = 800
+# coor_list = []
+# for i in range(150):
+#       x = random.randint(0,altura_max)
+#       y = random.randint(0,altura_max)
+#       coor_list.append([x,y])
+
+
+
+# while True:
+#    for event in pygame.event.get():
+#       if event.type == pygame.QUIT:
+#          sys.exit()
+   
+#    screen.fill(BACKGROUND)
+#    pygame.display.flip()
+
+#    for coord in coor_list:
+#       pygame.draw.circle(screen, WHITE, coord, 2)
+#       coord[1]+=3
+#       coord[0]+=1
+#       if (coord[1]>altura_max):
+#          coord[1]=0
+      
+#       if(coord[0]>altura_max):
+#          coord[0]=0
+   
+#    pygame.display.flip()
+#    clock.tick(80)
