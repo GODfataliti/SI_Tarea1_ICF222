@@ -18,7 +18,7 @@ BACKGROUND = (25, 26, 25)
 
 pygame.init()
         #Ancho,Alto
-ancho_v2,alto_v2 = 700, 700
+ancho_v2,alto_v2 = 601,601
 ancho,alto  = 600, 600
 
 size = (ancho_v2,alto_v2)
@@ -80,7 +80,7 @@ clock = pygame.time.Clock()
 #     # -- ZONA DE DIBJO --
 #     pygame.display.flip()
 
-margen = (dimCW/2)-(dimCW/2)*0.15
+margen = int((dimCW/2)-(dimCW/2)*0.15)
 
 #COORDENADAS X e Y
 coor_x = dimCH/2 + margen
@@ -88,10 +88,10 @@ coor_y = dimCH/2 + margen
 coor_z = int(((dimCW/2)+(dimCH/2))/2) + margen
 
 print(f'{dimCH} - {dimCW}')
-
+colors_list = [WHITE,BLACK]
 
 figura_circle = pygame.image.load(r'C:\Users\FATALITI\Desktop\Files\Codigos\SI_Tarea1_ICF222\src\img\hao.png')
-image = pygame.transform.scale(figura_circle, [int(dimCW*0.75),int(dimCH*0.75)])
+image = pygame.transform.scale(figura_circle, [int(dimCW*0.75+margen),int(dimCH*0.75+margen)])
 
 #VELOCIDAD DE MOVIMIENTO
 speed_x = 6
@@ -104,13 +104,19 @@ select_x = None
 select_y = None
 
 coord_list = []
+contador_white = 0
+contador_black = 0
 
 grid = [x for x in range(0,ancho_v2,dimCW)]
 print(grid)
 
+diferencia_grid = (ancho_v2 - ancho) // 100
+
+
 while True:
-   num_linea = [0,1,2,3,4,5,6]
+   num_linea = [0,1,2,3,4,5]
    screen.fill(BACKGROUND)
+   screen.blit(image, [coor_x,coor_y])
    for event in pygame.event.get():
       #print(event)
       if event.type == pygame.QUIT:
@@ -123,6 +129,8 @@ while True:
          select_y = ((pos[1]-(dimCW/2)) // 100)
          coord_list.append([select_x,select_y])
          print(f' {select_x} , {select_y} ')
+         contador_white+=1
+         print(f'Total blancos: {contador_white}')
    
    #screen.fill(BACKGROUND)   
    for y in range(0,nxC):
@@ -133,11 +141,12 @@ while True:
                     [(x+1)  * dimCW,    (y+1)   * dimCH],
                     [(x)    * dimCW,    (y+1)   * dimCH]]
             for value in poly:
-               valor_x = value[0] + margen
-               valor_y = value[1] + margen
+               valor_x = value[0] + ((dimCW/2) * diferencia_grid)
+               valor_y = value[1] + ((dimCW/2) * diferencia_grid)
                new_poly.append([valor_x,valor_y])
 
             pygame.draw.polygon(screen, linebg, new_poly, width=1)
+   
    
    if(coor_x>(ancho-margen) or coor_x<0):
       speed_x *=-1
@@ -145,20 +154,20 @@ while True:
    if(coor_y>(alto-margen) or coor_y<0):
       speed_y *=-1
 
-   screen.blit(image, [coor_x,coor_y])
    if(select_x!=None or select_y!=None):
+      #color = random.choice(colors_list)
       for value in coord_list:
          pygame.draw.circle(screen, WHITE, (((coor_z+dimCW*num_linea.index(value[0]))),((coor_z+dimCW*num_linea.index(value[1])))), (margen),width=0)
+         
    
    #AGREGAR FUNCION QUE RETORNE LAS COORDENADAS DEL TABLERO (FILA,COLUMNA)
-   pygame.draw.circle(screen, WHITE, (((coor_z+dimCW*num_linea[0])),((coor_z+dimCW*num_linea[0]))), (margen),width=0)
+   #pygame.draw.circle(screen, WHITE, (((coor_z+dimCW*num_linea[0])),((coor_z+dimCW*num_linea[0]))), (margen),width=0)
    #pygame.draw.circle(screen, WHITE, ((coor_z+dimCW*num_linea[3]),(coor_z+dimCW*num_linea[2])), (margen),width=0)
    
    #pygame.draw.circle(screen, BLACK, ((coor_z+dimCW*num_linea[2]),(coor_z+dimCW*num_linea[2])), (margen),width=0)
    #pygame.draw.circle(screen, BLACK, ((coor_z+dimCW*num_linea[3]),(coor_z+dimCW*num_linea[3])), (margen),width=0)
 
    #pygame.draw.circle(screen, BLACK, ((coor_z+dimCW*num_linea.index(select_x)),(coor_z+dimCW*num_linea.index(select_y))), (margen),width=0)
-
 
 
    coor_x += speed_x
