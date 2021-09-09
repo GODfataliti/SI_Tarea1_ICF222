@@ -45,7 +45,7 @@ coor_z = int(((dimCW/2)+(dimCH/2))/2) + ((dimCW/2) * diferencia_grid)
 print(f'{dimCH} - {dimCW}')
 colors_list = [WHITE,BLACK]
 
-figura_circle = pygame.image.load(r'C:\Users\FATALITI\Desktop\Files\Codigos\SI_Tarea1_ICF222\src\img\hao.png')
+figura_circle = pygame.image.load(r'D:\Universidad\Programacion\Sistemas_Inteligentes\Tareas\01\SI_Tarea1_ICF222\src\img\hao.png')
 image = pygame.transform.scale(figura_circle, [int(dimCW*0.75+margen),int(dimCH*0.75+margen)])
 
 #VELOCIDAD DE MOVIMIENTO
