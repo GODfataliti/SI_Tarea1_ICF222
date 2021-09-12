@@ -71,7 +71,8 @@ class Interfaz:
                 pos_y+=1
             pos_x+=1
 
-    def valid_move(self,player,pos):
+    def move(self,player,pos):
+        #Verificar si el movimiento es valido.
         x,y = (pos[0]//70) , (pos[1]//70)
         x2,y2 = x,y
         if player==1:
@@ -137,12 +138,12 @@ class Interfaz:
                     select_y = (pos[1] // 70)
                     print(f' {select_x} , {select_y} ')
                     if(self.reversi.player == 1):
-                        self.valid_move(self.reversi.player,pos)
+                        self.move(self.reversi.player,pos)
                         print(f'Blanca: {self.reversi.player}')
                         self.reversi.player = 2
                     
                     elif(self.reversi.player==2):
-                        self.valid_move(self.reversi.player,pos)
+                        self.move(self.reversi.player,pos)
                         print(f'Negra: {self.reversi.player}')
                         self.reversi.player = 1
             

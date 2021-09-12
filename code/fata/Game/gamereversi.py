@@ -25,7 +25,11 @@ class Reversi:
         self.__init__()
     
     #Agregar funciones del juego!
-    def take_token(self,):
+    def take_token(self,): #Jugador Actual, posicion Marcada, posicion inicial
         #Recorrer la matriz
+        pass
+
+
+    def valid_move(self):
         pass
     
