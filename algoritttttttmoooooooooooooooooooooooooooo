@@ -1,0 +1,25 @@
+def AlphaBeta(board, player, depth, alpha, beta, maximizingPlayer):
+    if depth == 0 or IsTerminalNode(board, player):
+        return EvalBoard(board, player)
+    if maximizingPlayer:
+        v = minEvalBoard
+        for y in range(n):
+            for x in range(n):
+                if ValidMove(board, x, y, player):
+                    (boardTemp, totctr) = MakeMove(copy.deepcopy(board), x, y, player)
+                    v = max(v, AlphaBeta(boardTemp, player, depth - 1, alpha, beta, False))
+                    alpha = max(alpha, v)
+                    if beta <= alpha:
+                        break # beta cut-off
+        return v
+    else: # minimizingPlayer
+        v = maxEvalBoard
+        for y in range(n):
+            for x in range(n):
+                if ValidMove(board, x, y, player):
+                    (boardTemp, totctr) = MakeMove(copy.deepcopy(board), x, y, player)
+                    v = min(v, AlphaBeta(boardTemp, player, depth - 1, alpha, beta, True))
+                    beta = min(beta, v)
+                    if beta <= alpha:
+                        break # alpha cut-off
+        return v
