@@ -66,7 +66,8 @@ grid = [x for x in range(0,ancho_v2,dimCW)]
 print(grid)
 
 diferencia_grid = (ancho_v2 - ancho) // 100
-
+TITLE = "REVERSI"
+pygame.display.set_caption(TITLE)
 
 while True:
    num_linea = [0,1,2,3,4,5]
