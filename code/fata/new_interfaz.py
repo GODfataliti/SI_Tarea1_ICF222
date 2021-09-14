@@ -135,11 +135,11 @@ def actualizar_tablero():
 
 def actualizar_puntaje(blanca,negra):
     # 2,1 Negra - 5,1 Blanca
-    texto_blanca = f'{blanca}'
+    texto_blanca = f'{blanca}  '
     imagen_blanca = LETRA20.render(texto_blanca,True,BLACK,(99,246,255))
     screen.blit(imagen_blanca,[410,75])
 
-    texto_negra = f'{negra}'
+    texto_negra = f'{negra}  '
     imagen_negra = LETRA20.render(texto_negra,True,BLACK,(99,246,255))
     screen.blit(imagen_negra,[140,75])
 

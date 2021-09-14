@@ -8,6 +8,8 @@ def cargar_tablero():
     
     return board
 
+
+
 class Reversi:
 
     def __init__(self):
@@ -15,7 +17,7 @@ class Reversi:
         self.valor_blanca = 0
         self.valor_negra = 0
         self.player = 1
-
+                    #Fila,Columna
         self.tablero[4][3] = 1
         self.tablero[4][4] = -1
         self.tablero[5][3] = -1
@@ -30,6 +32,6 @@ class Reversi:
         pass
 
 
-    def valid_move(self):
+    def place_piece(self, pos_x, pos_y):
         pass
     

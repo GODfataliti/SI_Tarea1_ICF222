@@ -38,7 +38,7 @@ def busquedaRellenoColumna(TableroJugada,x,y,jugador):
           xvariable = lista[0]
           yvariable = lista[1]
           x1= lista[2]
-          y1= lista[3]   
+          y1= lista[3]  
           while(xvariable <= x1):
             TableroJugada[xvariable][y1] = 1
             xvariable +=1
@@ -59,6 +59,7 @@ def busquedaRellenoColumna(TableroJugada,x,y,jugador):
         lista[3] = constante
         encontradas2 +=1
         contCol+=1
+        #Aqui
         if (encontradas2>1):
           xvariable = lista[0]
           yvariable = lista[1]
