@@ -118,7 +118,7 @@ def BusquedaRellenoFila(TableroJugada,x,y,jugador):
         lista[3] = i
         encontradas2 +=1
         contFila+=1
-      if(TableroJugada[i][constante]==2 and encontradas2 >1 and (TableroJugada[constante][i-1]!=0)):
+      if(TableroJugada[constante][i]==2 and encontradas2 >1 and (TableroJugada[constante][i-1]!=0)):
         lista[2] = constante
         lista[3] = i
         encontradas2 +=1
