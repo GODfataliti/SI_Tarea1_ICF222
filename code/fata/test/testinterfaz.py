@@ -45,12 +45,12 @@ class Interfaz:
     def start_board(self):
         self.screen = pygame.display.set_mode(SIZE)
         pygame.init()
-        self.interfaz = pygame.image.load(r'D:\Universidad\Programacion\Sistemas_Inteligentes\Tareas\01\SI_Tarea1_ICF222\src\img\Interfaz01.png').convert()
+        self.interfaz = pygame.image.load(r'C:\Users\crist\Desktop\Codes\SI_Tarea1_ICF222\src\img\Interfaz01.png').convert()
         self.screen.fill(BACKGROUND)
         self.screen.blit(self.interfaz,[0,0])
         pygame.display.set_caption(TITLE)
-        self.recursos['negras'] = pygame.image.load(r'D:\Universidad\Programacion\Sistemas_Inteligentes\Tareas\01\SI_Tarea1_ICF222\src\img\ficha_negra.png')
-        self.recursos['blancas'] = pygame.image.load(r'D:\Universidad\Programacion\Sistemas_Inteligentes\Tareas\01\SI_Tarea1_ICF222\src\img\ficha_blanca.png')
+        self.recursos['negras'] = pygame.image.load(r'C:\Users\crist\Desktop\Codes\SI_Tarea1_ICF222\src\img\ficha_negra.png')
+        self.recursos['blancas'] = pygame.image.load(r'C:\Users\crist\Desktop\Codes\SI_Tarea1_ICF222\src\img\ficha_blanca.png')
 
         return True
     
