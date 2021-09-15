@@ -120,58 +120,58 @@ class Interfaz:
         diferencia_y = 140
         x,y = pos[0], pos[1]
         x2,y2 = x,y
-        try:
-            if player==1:
-                if(x<0 or y<0):
-                    print(f'Jugada Incorrecta.')
-                    return False
-
-                if(self.reversi.tablero[y][x]==0 or self.reversi.tablero[y][x]==2):
-                    self.reversi.tablero[y][x]=1
-                    
-                    x2=x2*70 + MARGEN + diferencia_x
-                    y2=y2*70 + MARGEN + diferencia_y
-                    print(f'B: {x2}, {y2}')
-
-                    self.screen.blit(self.recursos['negras'],[x2,y2])
-                    self.reversi.fill_column(y,x)
-                    imprimeTablero(self.reversi.tablero)
-                    #self.reversi.place_piece(x,y)
-                    return True
-                else:
-                    print(f'Jugada Incorrecta.')
-                    return False
-            
-            elif player==2:
-                if(x<0 or y<0):
-                    print(f'Jugada Incorrecta.')
-                    return False
-
-                if(self.reversi.tablero[y][x]==0 or self.reversi.tablero[y][x]==1):
-                    self.reversi.tablero[y][x]=2
-                    # if(x==0):
-                    #     x2=x+70
-                    # if(y==0):
-                    #     y2=y+70
-                    
-                    x2=x2*70 + MARGEN + diferencia_x
-                    y2=y2*70 + MARGEN + diferencia_y
-
-                    print(f'N: {x2}, {y2}')
-
-                    self.screen.blit(self.recursos['blancas'],[x2,y2])
-                    self.reversi.fill_column(y,x)
-                    imprimeTablero(self.reversi.tablero)
-                    #self.reversi.place_piece(x,y)
-                    return True
-                else:
-                    print(f'Jugada Incorrecta.')
-                    return False
-            else:
-                print("Ninguna opcion")
+        #try:
+        if(player==1):
+            if(x<0 or y<0):
+                print(f'Jugada Incorrecta.')
                 return False
-        except Exception as e:
-            print(f'Error: {e}')
+
+            if(self.reversi.tablero[y][x]==0 or self.reversi.tablero[y][x]==2):
+                self.reversi.tablero[y][x]=1
+                
+                x2=x2*70 + MARGEN + diferencia_x
+                y2=y2*70 + MARGEN + diferencia_y
+                print(f'B: {x2}, {y2}')
+
+                self.screen.blit(self.recursos['negras'],[x2,y2])
+                self.reversi.fill_column(y,x)
+                imprimeTablero(self.reversi.tablero)
+                #self.reversi.place_piece(x,y)
+                return True
+            else:
+                print(f'Jugada Incorrecta.')
+                return False
+        
+        elif(player==2):
+            if(x<0 or y<0):
+                print(f'Jugada Incorrecta.')
+                return False
+
+            if(self.reversi.tablero[y][x]==0 or self.reversi.tablero[y][x]==1):
+                self.reversi.tablero[y][x]=2
+                # if(x==0):
+                #     x2=x+70
+                # if(y==0):
+                #     y2=y+70
+                
+                x2=x2*70 + MARGEN + diferencia_x
+                y2=y2*70 + MARGEN + diferencia_y
+
+                print(f'N: {x2}, {y2}')
+
+                self.screen.blit(self.recursos['blancas'],[x2,y2])
+                self.reversi.fill_column(y,x)
+                imprimeTablero(self.reversi.tablero)
+                #self.reversi.place_piece(x,y)
+                return True
+            else:
+                print(f'Jugada Incorrecta.')
+                return False
+        else:
+            print("Ninguna opcion")
+            return False
+        #except Exception as e:
+        #    print(f'Error: {e}')
 
     def update_points(self,blanca,negra):
         pygame.font.init()
@@ -187,7 +187,7 @@ class Interfaz:
     def new_game(self):
         #new = self.dificult_selection()
         self.start_board()
-        self.reversi.start(None)
+        self.reversi.start()
 
     def start_game(self):
         self.new_game()
@@ -208,15 +208,15 @@ class Interfaz:
                     select_x = (pos[0] // 70) - 1
                     select_y = (pos[1] // 70) - 2
                     print(f' {select_x} , {select_y} ')
-                    if(self.reversi.player == 1):
+                    if(self.reversi.player == 2):
                         if(self.move(self.reversi.player,[select_x,select_y])):
                             print(f'Blanca: {self.reversi.player}')
-                            self.reversi.player = 2
+                            self.reversi.player = 1
                     
-                    elif(self.reversi.player==2):
+                    elif(self.reversi.player==1):
                         if(self.move(self.reversi.player,[select_x,select_y])):
                             print(f'Negra: {self.reversi.player}')
-                            self.reversi.player = 1
+                            self.reversi.player = 2
             
             self.update_board()
             self.update_points(self.reversi.valor_blanca,self.reversi.valor_negra)

@@ -23,9 +23,11 @@ class Reversi:
         self.tablero[3][2] = 1
         self.tablero[3][3] = 2
     
-    def start(self,dificultad):
+    def start(self):
         self.__init__()
-    
+
+    def __setitem__(self, x,y, valor):
+        self.tablero[x][y] = valor
     
     def fill_column(self,x,y):
         lista=[0,0,0,0]
@@ -59,7 +61,9 @@ class Reversi:
                         x1 = lista[2]
                         y1 = lista[3]
                         while(x_variable <= x1):
+                            valor = 1
                             self.tablero[x_variable][y1]=1
+                            self.__setitem__(x_variable,y1,valor)
                             x_variable+=1
             lista =[0,0,0,0]
         if(self.player==2):
@@ -84,7 +88,9 @@ class Reversi:
                         x1 = lista[2]
                         y1 = lista[3]
                         while(x_variable <= x1):
+                            valor = 2
                             self.tablero[x_variable][y1] = 2
+                            self.__setitem__(x_variable,y1,valor)
                             x_variable+=1
             lista =[0,0,0,0]
         
@@ -121,7 +127,9 @@ class Reversi:
                         x1 = lista[2]
                         y1 = lista[3]
                         while(y_variable <= y1):
+                            valor = 1
                             self.tablero[x_variable][y_variable] = 1
+                            self.__setitem__(x_variable,y_variable,valor)
                             y_variable+=1
             lista =[0,0,0,0]
         if(self.player==2):
@@ -146,14 +154,15 @@ class Reversi:
                         x1 = lista[2]
                         y1 = lista[3]
                         while(y_variable <= 1):
+                            valor = 2
                             self.tablero[x_variable][y_variable] = 2
+                            self.__setitem__(x_variable,y_variable,valor)
                             y_variable+=1
             lista =[0,0,0,0]
-        
+        self.tablero = self.fill_diag_sup(x,y)
         return self.tablero
         
-        self.tablero = fill_diag_sup(self.tablero,x,y)
-    
+
     def fill_diag_sup(self,x,y):
         lista=[0,0,0,0]
         dimencion = len(self.tablero)
@@ -187,7 +196,9 @@ class Reversi:
                             x1 = lista[2]
                             y1 = lista[3]
                             while(x_variable<=x1 and y_variable<=y1):
+                                valor = 1
                                 self.tablero[x_variable][y_variable]=1
+                                self.__setitem__(x_variable,y_variable,valor)
                                 y_variable+=1
                                 x_variable+=1
                     case1+=1
@@ -216,12 +227,15 @@ class Reversi:
                             x1 = lista[2]
                             y1 = lista[3]
                             while(x_variable<=x1 and y_variable<=y1):
-                                self.tablero[x_variable][y_variable]=1
+                                valor = 2
+                                self.tablero[x_variable][y_variable]=2
+                                self.__setitem__(x_variable,y_variable,valor)
                                 y_variable+=1
                                 x_variable+=1
                     case1+=1
                     case2+=1
         self.tablero = self.fill_diag_sup2(x,y)
+        return self.tablero
     
     def fill_diag_sup2(self,x,y):
         lista=[0,0,0,0]
@@ -245,8 +259,8 @@ class Reversi:
                         lista[1] = case2
                         findit1+=1
                     if(self.tablero[case2][case1]==1 and findit1 < 2):
-                        lista[3] = case1
-                        lista[4] = case2
+                        lista[2] = case1
+                        lista[3] = case2
                         findit1+=1
                     if(self.tablero[case2][case1]==1 and findit1 > 1):
                         lista[2] = case1
@@ -257,8 +271,10 @@ class Reversi:
                             y_variable = lista[1]
                             x1 = lista[2]
                             y1 = lista[3]
-                            while(x_variable<=x1 and y_variable>=1):
+                            while(x_variable<=x1 and y_variable>=y1):
+                                valor = 1
                                 self.tablero[y_variable][x_variable]=1
+                                self.__setitem__(y_variable,x_variable,valor)
                                 y_variable-=1
                                 x_variable+=1
                     case1+=1
@@ -275,8 +291,8 @@ class Reversi:
                         lista[1] = case2
                         findit2+=1
                     if(self.tablero[case2][case1]==2 and findit1 < 2):
-                        lista[3] = case1
-                        lista[4] = case2
+                        lista[2] = case1
+                        lista[3] = case2
                         findit2+=1
                     if(self.tablero[case2][case1]==2 and findit1 > 1):
                         lista[2] = case1
@@ -288,14 +304,14 @@ class Reversi:
                             x1 = lista[2]
                             y1 = lista[3]
                             while(x_variable<=x1 and y_variable>=1):
+                                valor = 2
                                 self.tablero[y_variable][x_variable]=2
+                                self.__setitem__(y_variable,x_variable,valor)
                                 y_variable-=1
                                 x_variable+=1
                     case1+=1
                     case2-=1
         return self.tablero
 
-
-        pass
 
 
