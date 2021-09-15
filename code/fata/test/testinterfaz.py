@@ -94,10 +94,10 @@ class Interfaz:
             contador = {x:fila.count(x) for x in fila}
             #print(contador)
             if(contador.get(2)):
-                self.reversi.valor_negra+=contador.get(2)
+                self.reversi.valor_blanca+=contador.get(2)
             
             if(contador.get(1)):
-                self.reversi.valor_blanca+=contador.get(1)
+                self.reversi.valor_negra+=contador.get(1)
 
             #Actualizar casillas
             for value in fila:
@@ -105,10 +105,10 @@ class Interfaz:
                 #OBTENER POSICION COORDENADA
                 new_x = (pos_x * 70) + MARGEN + diferencia_x
                 new_y = (pos_y * 70) + MARGEN + diferencia_y
-                if value == 1:
+                if value == 2:
                     self.screen.blit(self.recursos['blancas'],[new_y,new_x])
 
-                if value == 2:
+                if value == 1:
                     self.screen.blit(self.recursos['negras'],[new_y,new_x])
                 
                 pos_y+=1
@@ -133,7 +133,7 @@ class Interfaz:
                     y2=y2*70 + MARGEN + diferencia_y
                     print(f'B: {x2}, {y2}')
 
-                    self.screen.blit(self.recursos['blancas'],[x2,y2])
+                    self.screen.blit(self.recursos['negras'],[x2,y2])
                     self.reversi.fill_column(y,x)
                     imprimeTablero(self.reversi.tablero)
                     #self.reversi.place_piece(x,y)
@@ -159,7 +159,8 @@ class Interfaz:
 
                     print(f'N: {x2}, {y2}')
 
-                    self.screen.blit(self.recursos['negras'],[x2,y2])
+                    self.screen.blit(self.recursos['blancas'],[x2,y2])
+                    self.reversi.fill_column(y,x)
                     imprimeTablero(self.reversi.tablero)
                     #self.reversi.place_piece(x,y)
                     return True
