@@ -39,7 +39,6 @@ def busquedaRellenoColumna(TableroJugada,x,y,jugador):
           yvariable = lista[1]
           x1= lista[2]
           y1= lista[3] 
-          print("xvariable",xvariable,"yvariable",yvariable,"x1",x1,"y1",y1)  
           while(xvariable <= x1):
             TableroJugada[xvariable][y1] = 1
             xvariable +=1
@@ -102,7 +101,6 @@ def BusquedaRellenoFila(TableroJugada,x,y,jugador):
           yvariable = lista[1]
           x1= lista[2]
           y1= lista[3]
-          print("xvariable",xvariable,"yvariable",yvariable,"x1",x1,"y1",y1) 
           while(yvariable <= y1):
             TableroJugada[xvariable][yvariable] = 1
             yvariable +=1
@@ -128,7 +126,6 @@ def BusquedaRellenoFila(TableroJugada,x,y,jugador):
           yvariable = lista[1]
           x1= lista[2]
           y1= lista[3]
-          print("xvariable",xvariable,"yvariable",yvariable,"x1",x1,"y1",y1) 
           while(yvariable <= y1):
             TableroJugada[xvariable][yvariable] = 2
             yvariable +=1
