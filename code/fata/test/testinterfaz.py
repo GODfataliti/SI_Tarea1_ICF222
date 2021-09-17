@@ -187,7 +187,7 @@ class Interfaz:
     def new_game(self):
         #new = self.dificult_selection()
         self.start_board()
-        self.reversi.start(None)
+        self.reversi.start()
 
     def start_game(self):
         self.new_game()

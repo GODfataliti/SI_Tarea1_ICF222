@@ -23,7 +23,7 @@ class Reversi:
         self.tablero[3][2] = 1
         self.tablero[3][3] = 2
     
-    def start(self,dificultad):
+    def start(self):
         self.__init__()
         print(self.tablero)
     
@@ -64,6 +64,7 @@ class Reversi:
                         y1 = lista[3]
                         print("LISTA QUE ESTA REVISANDO",x_variable,y_variable,x1,y1)
                         while(x_variable <= x1):
+                            valor = 1
                             self.tablero[x_variable][y1]=1
                             if(self.tablero[x_variable][y1]!=1):
                                 self.tablero[x_variable][y1]=1
@@ -138,6 +139,7 @@ class Reversi:
                         y1 = lista[3]
                         print("LISTA QUE ESTA REVISANDO",x_variable,y_variable,x1,y1)
                         while(y_variable <= y1):
+                            valor = 1
                             self.tablero[x_variable][y_variable] = 1
                             print("dato 1 tablero: ",self.tablero[y_variable][x_variable])
                             if(self.tablero[x_variable][y1]!=1):
@@ -215,6 +217,7 @@ class Reversi:
                             y1 = lista[3]
                             print("LISTA QUE ESTA REVISANDO",x_variable,y_variable,x1,y1)
                             while(x_variable<=x1 and y_variable<=y1):
+                                valor = 1
                                 self.tablero[x_variable][y_variable]=1
                                 print("dato 1 tablero: ",self.tablero[y_variable][x_variable])
                                 if(self.tablero[x_variable][y1]!=1):
@@ -257,7 +260,6 @@ class Reversi:
                     case2+=1
         self.tablero = self.fill_diag_sup2(x,y)
         return self.tablero
-
     
     def fill_diag_sup2(self,x,y):
         print("4")
@@ -352,7 +354,5 @@ class Reversi:
             print("sali de player 2 ")
         return self.tablero
 
-
-        pass
 
 
