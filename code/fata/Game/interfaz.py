@@ -35,7 +35,6 @@ class Interfaz:
         return True
     
     def dificult_selection(self):
-        self.start_board()
         opc = None
         pos_x = 0
         pos_y = 0
@@ -58,7 +57,7 @@ class Interfaz:
                     print("dificil")
                     return 3
 
-        #self.start_board()
+        self.start_board()
         return 0
 
     def update_board(self):
@@ -85,9 +84,11 @@ class Interfaz:
                 new_x = (pos_x * 70) + MARGEN
                 new_y = (pos_y * 70) + MARGEN
                 if value == 1:
+                    #self.image_load('blancas',[new_y,new_x])    
                     self.screen.blit(self.recursos['blancas'],[new_y,new_x])
 
                 if value == -1:
+                    #self.image_load('blancas',[new_y,new_x])
                     self.screen.blit(self.recursos['negras'],[new_y,new_x])
                 
                 pos_y+=1
@@ -161,6 +162,10 @@ class Interfaz:
                     select_x = (pos[0] // 70)
                     select_y = (pos[1] // 70)
                     print(f' {select_x} , {select_y} ')
+
+                    self.dificult_selection()
+
+
                     if(self.reversi.player == 1):
                         self.move(self.reversi.player,pos)
                         print(f'Blanca: {self.reversi.player}')
