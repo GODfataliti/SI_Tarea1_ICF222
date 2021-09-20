@@ -104,26 +104,6 @@ def GetSortedNodes(board, player):
     sortedNodes = [node[0] for node in sortedNodes]
     return sortedNodes
 
-def Minimax(board, player, depth, maximizingPlayer):
-    if depth == 0 or IsTerminalNode(board, player):
-        return EvalBoard(board, player)
-    if maximizingPlayer:
-        bestValue = minEvalBoard
-        for y in range(n):
-            for x in range(n):
-                if ValidMove(board, x, y, player):
-                    (boardTemp, totctr) = MakeMove(copy.deepcopy(board), x, y, player)
-                    v = Minimax(boardTemp, player, depth - 1, False)
-                    bestValue = max(bestValue, v)
-    else: # minimizingPlayer
-        bestValue = maxEvalBoard
-        for y in range(n):
-            for x in range(n):
-                if ValidMove(board, x, y, player):
-                    (boardTemp, totctr) = MakeMove(copy.deepcopy(board), x, y, player)
-                    v = Minimax(boardTemp, player, depth - 1, True)
-                    bestValue = min(bestValue, v)
-    return bestValue
 
 def AlphaBeta(board, player, depth, alpha, beta, maximizingPlayer):
     if depth == 0 or IsTerminalNode(board, player):
@@ -152,26 +132,6 @@ def AlphaBeta(board, player, depth, alpha, beta, maximizingPlayer):
                         break # alpha cut-off
         return v
 
-def AlphaBetaSN(board, player, depth, alpha, beta, maximizingPlayer):
-    if depth == 0 or IsTerminalNode(board, player):
-        return EvalBoard(board, player)
-    sortedNodes = GetSortedNodes(board, player)
-    if maximizingPlayer:
-        v = minEvalBoard
-        for boardTemp in sortedNodes:
-            v = max(v, AlphaBetaSN(boardTemp, player, depth - 1, alpha, beta, False))
-            alpha = max(alpha, v)
-            if beta <= alpha:
-                break # beta cut-off
-        return v
-    else: # minimizingPlayer
-        v = maxEvalBoard
-        for boardTemp in sortedNodes:
-            v = min(v, AlphaBetaSN(boardTemp, player, depth - 1, alpha, beta, True))
-            beta = min(beta, v)
-            if beta <= alpha:
-                break # alpha cut-off
-        return v
 
 
     if depth == 0 or IsTerminalNode(board, player):
@@ -201,14 +161,9 @@ def BestMove(board, player):
                 (boardTemp, totctr) = MakeMove(copy.deepcopy(board), x, y, player)
                 if opt == 0:
                     points = EvalBoard(boardTemp, player) 
-                elif opt == 1:
-                    
-                    points = Minimax(boardTemp, player, depth, True)
                 elif opt == 2:
                     points = AlphaBeta(board, player, depth, minEvalBoard, maxEvalBoard, True)
                     
-                elif opt == 3:
-                    points = AlphaBetaSN(board, player, depth, minEvalBoard, maxEvalBoard, True)
 
                 if points > maxPoints:
                     maxPoints = points
