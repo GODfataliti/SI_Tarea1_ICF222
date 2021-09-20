@@ -1,4 +1,4 @@
-from reversi import Reversi
+from reversiModificaionesCristobal import Reversi
 import pygame
 import collections
 import sys
@@ -115,40 +115,53 @@ class Interfaz:
 
     def move(self,player,pos):
         #Verificar si el movimiento es valido.
+        contador = 0
+        dificultad = 0
         diferencia_x = 70
         diferencia_y = 140
         x,y = pos[0], pos[1]
         x2,y2 = x,y
         #try:
+        
+        
+
         if player==1:
-            if(x<0 or y<0):
+            
+                    
+            if(x<0 or y<0 or x>5 or y>5 ):
                 print(f'Jugada Incorrecta.')
                 return False
 
-            if(self.reversi.tablero[y][x]==0 or self.reversi.tablero[y][x]==2):
-                self.reversi.tablero[y][x]=1
+            
+            if(self.reversi.tablero[y][x]==0 ):
+                print("entre")
                 
                 x2=x2*70 + MARGEN + diferencia_x
                 y2=y2*70 + MARGEN + diferencia_y
                 print(f'B: {x2}, {y2}')
-
-                self.screen.blit(self.recursos['negras'],[x2,y2])
-                self.reversi.fill_column(y,x)
-                #imprimeTablero(self.reversi.tablero)
-                imprimeTablero(self.reversi.tablero)
-                #self.reversi.place_piece(x,y)
-                return True
+                if(self.reversi.ValidarMovimiento(self.reversi.tablero,x,y,self.reversi.player)):
+                    self.reversi.tablero[y][x]=1
+                    self.screen.blit(self.recursos['negras'],[x2,y2])
+                    self.reversi.fill_column(x,y)
+                    #imprimeTablero(self.reversi.tablero)
+                    imprimeTablero(self.reversi.tablero)
+                    #self.reversi.place_piece(x,y)
+                    return True
+                else:
+                    print(f'Jugada Incorrecta.')
+                    return False
             else:
                 print(f'Jugada Incorrecta.')
                 return False
         
         elif player==2:
-            if(x<0 or y<0):
+            
+            if(x<0 or y<0 or x>5 or y>5):
                 print(f'Jugada Incorrecta.')
                 return False
 
-            if(self.reversi.tablero[y][x]==0 or self.reversi.tablero[y][x]==1):
-                self.reversi.tablero[y][x]=2
+            if(self.reversi.tablero[y][x]==0 ):
+                print("entre")
                 # if(x==0):
                 #     x2=x+70
                 # if(y==0):
@@ -158,12 +171,16 @@ class Interfaz:
                 y2=y2*70 + MARGEN + diferencia_y
 
                 print(f'N: {x2}, {y2}')
-
-                self.screen.blit(self.recursos['blancas'],[x2,y2])
-                self.reversi.fill_column(y,x)
-                imprimeTablero(self.reversi.tablero)
-                #self.reversi.place_piece(x,y)
-                return True
+                if(self.reversi.ValidarMovimiento(self.reversi.tablero,x,y,self.reversi.player)):
+                    self.reversi.tablero[y][x]=2
+                    self.screen.blit(self.recursos['blancas'],[x2,y2])
+                    self.reversi.fill_column(x,y)
+                    imprimeTablero(self.reversi.tablero)
+                    #self.reversi.place_piece(x,y)
+                    return True
+                else:
+                    print(f'Jugada Incorrecta.')
+                    return False
             else:
                 print(f'Jugada Incorrecta.')
                 return False
