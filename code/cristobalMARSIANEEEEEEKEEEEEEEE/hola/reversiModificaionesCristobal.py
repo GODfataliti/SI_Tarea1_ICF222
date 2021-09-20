@@ -90,7 +90,7 @@ class Reversi:
                         CondicionCumplida= self.EncontrarFichaAmiga(tabla,lista[0],lista[1],LugarARevisar,ficha)
                         if(CondicionCumplida == True):
                             return CondicionCumplida # el movimiento es legal 
-                    if(tabla[y][x+1]  != ficha and tabla[x+1][y] != 0): #derecha -----------------------------
+                    if(tabla[y][x+1]  != ficha and tabla[y][x+1] != 0): #derecha -----------------------------
                         lista[0]= x+1 
                         lista[1] =y 
                         LugarARevisar = 8
@@ -128,211 +128,229 @@ class Reversi:
                         if(CondicionCumplida == True):
                             return CondicionCumplida # el movimiento es legal
             
-            elif( x != 0 and y == 0 and x != 5  ): # izquierda --------------------------------------------------------------------------------##############
+            if( x == 0 and y != 0 and y != 5 ): # izquierda --------------------------------------------------------------------------------##############
                 if(tabla[y-1][x]  != ficha and tabla[y-1][x] != 0): #arriba --------------------------
-                        lista[0] = x
-                        lista[1] = y-1
-                        LugarARevisar =5
-                        CondicionCumplida= self.EncontrarFichaAmiga(tabla,lista[0],lista[1],LugarARevisar,ficha)
-                        if(CondicionCumplida == True):
-                            return CondicionCumplida # el movimiento es lega 
+                    lista[0] = x
+                    lista[1] = y-1
+                    LugarARevisar =5
+                    CondicionCumplida= self.EncontrarFichaAmiga(tabla,lista[0],lista[1],LugarARevisar,ficha)
+                    if(CondicionCumplida == True):
+                        return CondicionCumplida # el movimiento es lega 
                 if(tabla[y+1][x]  != ficha and tabla[y+1][x] != 0): #abajo --------------------------------------------------
-                        lista[0]= x
-                        lista[1] =y+1 
-                        LugarARevisar = 6
-                        CondicionCumplida= self.EncontrarFichaAmiga(tabla,lista[0],lista[1],LugarARevisar,ficha)
-                        if(CondicionCumplida == True):
-                            return CondicionCumplida # el movimiento es legal
+                    lista[0]= x
+                    lista[1] =y+1 
+                    LugarARevisar = 6
+                    CondicionCumplida= self.EncontrarFichaAmiga(tabla,lista[0],lista[1],LugarARevisar,ficha)
+                    if(CondicionCumplida == True):
+                        return CondicionCumplida # el movimiento es legal
                 if(tabla[y-1][x+1]  != ficha and tabla[y-1][x+1] != 0): # diagonal arriba derecha -----------------------------------
-                        lista[0]= x+1 
-                        lista[1] =y-1 
-                        LugarARevisar = 3
-                        CondicionCumplida= self.EncontrarFichaAmiga(tabla,lista[0],lista[1],LugarARevisar,ficha)
-                        if(CondicionCumplida == True):
-                            return CondicionCumplida # el movimiento es legal 
-                if(tabla[y][x+1]  != ficha and tabla[x+1][y] != 0): #derecha -----------------------------
-                        lista[0]= x+1 
-                        lista[1] =y 
-                        LugarARevisar = 8 
-                        CondicionCumplida= self.EncontrarFichaAmiga(tabla,lista[0],lista[1],LugarARevisar,ficha)
-                        if(CondicionCumplida == True):
-                            return CondicionCumplida # el movimiento es legal 
+                    lista[0]= x+1 
+                    lista[1] =y-1 
+                    LugarARevisar = 3
+                    CondicionCumplida= self.EncontrarFichaAmiga(tabla,lista[0],lista[1],LugarARevisar,ficha)
+                    if(CondicionCumplida == True):
+                        return CondicionCumplida # el movimiento es legal 
+                if(tabla[y][x+1]  != ficha and tabla[y][x+1] != 0): #derecha -----------------------------
+                    lista[0]= x+1 
+                    lista[1] =y 
+                    LugarARevisar = 8 
+                    CondicionCumplida= self.EncontrarFichaAmiga(tabla,lista[0],lista[1],LugarARevisar,ficha)
+                    if(CondicionCumplida == True):
+                        return CondicionCumplida # el movimiento es legal 
                 if(tabla[y+1][x+1]  != ficha and tabla[y+1][x+1] != 0): #diagonal abajo derecha --------------------------
-                        lista[0]= x+1
-                        lista[1] =y+1 
-                        LugarARevisar = 2
-                        CondicionCumplida= self.EncontrarFichaAmiga(tabla,lista[0],lista[1],LugarARevisar,ficha)
-                        if(CondicionCumplida == True):
-                            return CondicionCumplida # el movimiento es legal
-            elif(x == 0 and y != 0 and y != 5 ): # arriba ------------------------------------------------------------###############################
+                    lista[0]= x+1
+                    lista[1] =y+1 
+                    LugarARevisar = 2
+                    CondicionCumplida= self.EncontrarFichaAmiga(tabla,lista[0],lista[1],LugarARevisar,ficha)
+                    if(CondicionCumplida == True):
+                        return CondicionCumplida # el movimiento es legal
+            if( x != 0 and y == 0 and x != 5 ): # arriba ------------------------------------------------------------###############################
                 if(tabla[y][x-1]  != ficha and tabla[y][x-1] != 0): #izquierda ---------------------------------------------
-                        lista[0]= x-1
-                        lista[1] =y 
-                        LugarARevisar = 7
-                        CondicionCumplida= self.EncontrarFichaAmiga(tabla,lista[0],lista[1],LugarARevisar,ficha)
-                        if(CondicionCumplida == True):
-                            return CondicionCumplida # el movimiento es legal
-                if(tabla[y][x+1]  != ficha and tabla[x+1][y] != 0): #derecha -----------------------------
-                        lista[0]= x+1 
-                        lista[1] =y 
-                        LugarARevisar = 8 
-                        CondicionCumplida= self.EncontrarFichaAmiga(tabla,lista[0],lista[1],LugarARevisar,ficha)
-                        if(CondicionCumplida == True):
-                            return CondicionCumplida # el movimiento es legal
+                    lista[0]= x-1
+                    lista[1] =y 
+                    LugarARevisar = 7
+                    CondicionCumplida= self.EncontrarFichaAmiga(tabla,lista[0],lista[1],LugarARevisar,ficha)
+                    if(CondicionCumplida == True):
+                        return CondicionCumplida # el movimiento es legal
+                if(tabla[y][x+1]  != ficha and tabla[y][x+1] != 0): #derecha -----------------------------
+                    lista[0]= x+1 
+                    lista[1] =y 
+                    LugarARevisar = 8 
+                    CondicionCumplida= self.EncontrarFichaAmiga(tabla,lista[0],lista[1],LugarARevisar,ficha)
+                    if(CondicionCumplida == True):
+                        return CondicionCumplida # el movimiento es legal
                 if(tabla[y+1][x-1]  != ficha and tabla[y+1][x-1] != 0): #diagonal abajo izquierda ---------------------------
-                        lista[0]= x-1
-                        lista[1] =y+1 
-                        LugarARevisar = 4
-                        CondicionCumplida= self.EncontrarFichaAmiga(tabla,lista[0],lista[1],LugarARevisar,ficha)
-                        if(CondicionCumplida == True):
-                            return CondicionCumplida # el movimiento es legal
+                    lista[0]= x-1
+                    lista[1] =y+1 
+                    LugarARevisar = 4
+                    CondicionCumplida= self.EncontrarFichaAmiga(tabla,lista[0],lista[1],LugarARevisar,ficha)
+                    if(CondicionCumplida == True):
+                        return CondicionCumplida # el movimiento es legal
                 if(tabla[y+1][x]  != ficha and tabla[y+1][x] != 0): #abajo --------------------------------------------------
-                        lista[0]= x
-                        lista[1] =y+1 
-                        LugarARevisar = 6
-                        CondicionCumplida= self.EncontrarFichaAmiga(tabla,lista[0],lista[1],LugarARevisar,ficha)
-                        if(CondicionCumplida == True):
-                            return CondicionCumplida # el movimiento es legal
+                    lista[0]= x
+                    lista[1] =y+1 
+                    LugarARevisar = 6
+                    CondicionCumplida= self.EncontrarFichaAmiga(tabla,lista[0],lista[1],LugarARevisar,ficha)
+                    if(CondicionCumplida == True):
+                        return CondicionCumplida # el movimiento es legal
                 if(tabla[y+1][x+1]  != ficha and tabla[y+1][x+1] != 0): #diagonal abajo derecha --------------------------
-                        lista[0]= x+1
-                        lista[1] =y+1 
-                        LugarARevisar = 2
-                        CondicionCumplida= self.EncontrarFichaAmiga(tabla,lista[0],lista[1],LugarARevisar,ficha)
-                        if(CondicionCumplida == True):
-                            return CondicionCumplida # el movimiento es legal
+                    lista[0]= x+1
+                    lista[1] =y+1 
+                    LugarARevisar = 2
+                    CondicionCumplida= self.EncontrarFichaAmiga(tabla,lista[0],lista[1],LugarARevisar,ficha)
+                    if(CondicionCumplida == True):
+                        return CondicionCumplida # el movimiento es legal
                 
 
-            elif(x == 5 and y != 0  and y != 5 ): # abajo --------------------------------------##################################################
-                if(tabla[y][x+1]  != ficha and tabla[x+1][y] != 0): #derecha -----------------------------
-                        lista[0]= x+1 
-                        lista[1] =y 
-                        LugarARevisar = 8
-                        CondicionCumplida= self.EncontrarFichaAmiga(tabla,lista[0],lista[1],LugarARevisar,ficha)
-                        if(CondicionCumplida == True):
-                            return CondicionCumplida # el movimiento es legal
+            if(x != 0 and y == 5 and x != 5): # abajo --------------------------------------##################################################
+                if(tabla[y][x+1]  != ficha and tabla[y][x+1] != 0): #derecha -----------------------------
+                    lista[0]= x+1 
+                    lista[1] =y 
+                    LugarARevisar = 8
+                    CondicionCumplida= self.EncontrarFichaAmiga(tabla,lista[0],lista[1],LugarARevisar,ficha)
+                    if(CondicionCumplida == True):
+                        return CondicionCumplida # el movimiento es legal
                 if(tabla[y][x-1]  != ficha and tabla[y][x-1] != 0): #izquierda ---------------------------------------------
-                        lista[0]= x-1
-                        lista[1] =y 
-                        LugarARevisar = 7
-                        CondicionCumplida= self.EncontrarFichaAmiga(tabla,lista[0],lista[1],LugarARevisar,ficha)
-                        if(CondicionCumplida == True):
-                            return CondicionCumplida # el movimiento es legal
+                    lista[0]= x-1
+                    lista[1] =y 
+                    LugarARevisar = 7
+                    CondicionCumplida= self.EncontrarFichaAmiga(tabla,lista[0],lista[1],LugarARevisar,ficha)
+                    if(CondicionCumplida == True):
+                        return CondicionCumplida # el movimiento es legal
                 if(tabla[y-1][x+1]  != ficha and tabla[y-1][x+1] != 0): # diagonal arriba derecha -----------------------------------
-                        lista[0]= x+1 
-                        lista[1] =y-1 
-                        LugarARevisar = 3
-                        CondicionCumplida= self.EncontrarFichaAmiga(tabla,lista[0],lista[1],LugarARevisar,ficha)
-                        if(CondicionCumplida == True):
-                            return CondicionCumplida # el movimiento es legal 
+                    lista[0]= x+1 
+                    lista[1] =y-1 
+                    LugarARevisar = 3
+                    CondicionCumplida= self.EncontrarFichaAmiga(tabla,lista[0],lista[1],LugarARevisar,ficha)
+                    if(CondicionCumplida == True):
+                        return CondicionCumplida # el movimiento es legal 
                 if(tabla[y-1][x]  != ficha and tabla[y-1][x] != 0): #arriba --------------------------
-                        lista[0] = x
-                        lista[1] = y-1
-                        LugarARevisar =5
-                        CondicionCumplida= self.EncontrarFichaAmiga(tabla,lista[0],lista[1],LugarARevisar,ficha)
-                        if(CondicionCumplida == True):
-                            return CondicionCumplida # el movimiento es lega 
+                    lista[0] = x
+                    lista[1] = y-1
+                    LugarARevisar =5
+                    CondicionCumplida= self.EncontrarFichaAmiga(tabla,lista[0],lista[1],LugarARevisar,ficha)
+                    if(CondicionCumplida == True):
+                        return CondicionCumplida # el movimiento es lega 
                 if(tabla[y-1][x-1] != ficha and tabla[y-1][x-1]!=0):#diagonal izquierda arriba -------------------------------
-                        lista[0] = x-1
-                        lista[1] = y-1
-                        LugarARevisar = 1
-                        CondicionCumplida= self.EncontrarFichaAmiga(tabla,lista[0],lista[1],LugarARevisar,ficha) 
-                        if(CondicionCumplida == True):
-                            return CondicionCumplida # el movimiento es legal 
+                    lista[0] = x-1
+                    lista[1] = y-1
+                    LugarARevisar = 1
+                    CondicionCumplida= self.EncontrarFichaAmiga(tabla,lista[0],lista[1],LugarARevisar,ficha) 
+                    if(CondicionCumplida == True):
+                        return CondicionCumplida # el movimiento es legal 
 
 
-            elif(x != 0 and y == 5 and x != 5 ): # derecha ---------------------------------------------------------###############################
+            if(x == 5 and y != 0  and y != 5  ): # derecha ---------------------------------------------------------###############################
                 if(tabla[y-1][x]  != ficha and tabla[y-1][x] != 0): #arriba --------------------------
-                        lista[0] = x
-                        lista[1] = y-1
-                        LugarARevisar =8
-                        CondicionCumplida= self.EncontrarFichaAmiga(tabla,lista[0],lista[1],LugarARevisar,ficha)
-                        if(CondicionCumplida == True):
-                            return CondicionCumplida # el movimiento es lega
+            
+                    lista[0] = x
+                    lista[1] = y-1
+                    LugarARevisar =8
+                    CondicionCumplida= self.EncontrarFichaAmiga(tabla,lista[0],lista[1],LugarARevisar,ficha)
+                    if(CondicionCumplida == True):
+                        return CondicionCumplida # el movimiento es lega
                 if(tabla[y+1][x]  != ficha and tabla[y+1][x] != 0): #abajo --------------------------------------------------
-                        lista[0]= x
-                        lista[1] =y+1 
-                        LugarARevisar = 6
-                        CondicionCumplida= self.EncontrarFichaAmiga(tabla,lista[0],lista[1],LugarARevisar,ficha)
-                        if(CondicionCumplida == True):
-                            return CondicionCumplida # el movimiento es legal
+           
+                    lista[0]= x
+                    lista[1] =y+1 
+                    LugarARevisar = 6
+                    CondicionCumplida= self.EncontrarFichaAmiga(tabla,lista[0],lista[1],LugarARevisar,ficha)
+                    if(CondicionCumplida == True):
+                        return CondicionCumplida # el movimiento es legal
                 if(tabla[y][x-1]  != ficha and tabla[y][x-1] != 0): #izquierda ---------------------------------------------
-                        lista[0]= x-1
-                        lista[1] =y 
-                        LugarARevisar = 7
-                        CondicionCumplida= self.EncontrarFichaAmiga(tabla,lista[0],lista[1],LugarARevisar,ficha)
-                        if(CondicionCumplida == True):
-                            return CondicionCumplida # el movimiento es legal
+                    lista[0]= x-1
+                    lista[1] =y 
+                    LugarARevisar = 7
+                    CondicionCumplida= self.EncontrarFichaAmiga(tabla,lista[0],lista[1],LugarARevisar,ficha)
+                    if(CondicionCumplida == True):
+                        return CondicionCumplida # el movimiento es legal
                 if(tabla[y-1][x-1] != ficha and tabla[y-1][x-1]!=0):#diagonal izquierda arriba -------------------------------
-                        lista[0] = x-1
-                        lista[1] = y-1
-                        LugarARevisar = 1
-                        CondicionCumplida= self.EncontrarFichaAmiga(tabla,lista[0],lista[1],LugarARevisar,ficha) 
-                        if(CondicionCumplida == True):
-                            return CondicionCumplida # el movimiento es legal
+                    lista[0] = x-1
+                    lista[1] = y-1
+                    LugarARevisar = 1
+                    CondicionCumplida= self.EncontrarFichaAmiga(tabla,lista[0],lista[1],LugarARevisar,ficha) 
+                    if(CondicionCumplida == True):
+                        return CondicionCumplida # el movimiento es legal
                 if(tabla[y+1][x-1]  != ficha and tabla[y+1][x-1] != 0): #diagonal abajo izquierda ---------------------------
-                        lista[0]= x-1
-                        lista[1] =y+1 
-                        LugarARevisar = 4
-                        CondicionCumplida= self.EncontrarFichaAmiga(tabla,lista[0],lista[1],LugarARevisar,ficha)
-                        if(CondicionCumplida == True):
-                            return CondicionCumplida # el movimiento es legal
-            else: #-------------------------------------------##########################
+                    
+                    lista[0]= x-1
+                    lista[1] =y+1 
+                    LugarARevisar = 4
+                    CondicionCumplida= self.EncontrarFichaAmiga(tabla,lista[0],lista[1],LugarARevisar,ficha)
+                    if(CondicionCumplida == True):
+                        return CondicionCumplida # el movimiento es legal
+            if(x!=0 and x !=5 and y != 0 and y !=5): #-------------------------------------------##########################
                 if(tabla[y+1][x-1]  != ficha and tabla[y+1][x-1] != 0): #diagonal abajo izquierda ---------------------------
-                        lista[0]= x-1
-                        lista[1] =y+1 
-                        LugarARevisar = 4
-                        CondicionCumplida= self.EncontrarFichaAmiga(tabla,lista[0],lista[1],LugarARevisar,ficha)
-                        if(CondicionCumplida == True):
-                            return CondicionCumplida # el movimiento es legal
+                        
+                    lista[0]= x-1
+                    lista[1] =y+1 
+                    LugarARevisar = 4
+                    CondicionCumplida= self.EncontrarFichaAmiga(tabla,lista[0],lista[1],LugarARevisar,ficha)
+                    if(CondicionCumplida == True):
+          
+                        return CondicionCumplida # el movimiento es legal
                 if(tabla[y-1][x-1] != ficha and tabla[y-1][x-1]!=0):#diagonal izquierda arriba -------------------------------
-                        lista[0] = x-1
-                        lista[1] = y-1
-                        LugarARevisar = 1
-                        CondicionCumplida= self.EncontrarFichaAmiga(tabla,lista[0],lista[1],LugarARevisar,ficha) 
-                        if(CondicionCumplida == True):
-                            return CondicionCumplida # el movimiento es legal
+                
+                    lista[0] = x-1
+                    lista[1] = y-1
+                    LugarARevisar = 1
+                    CondicionCumplida= self.EncontrarFichaAmiga(tabla,lista[0],lista[1],LugarARevisar,ficha) 
+                    if(CondicionCumplida == True):
+                 
+                        return CondicionCumplida # el movimiento es legal
                 if(tabla[y][x-1]  != ficha and tabla[y][x-1] != 0): #izquierda ---------------------------------------------
-                        lista[0]= x-1
-                        lista[1] =y 
-                        LugarARevisar = 7
-                        CondicionCumplida= self.EncontrarFichaAmiga(tabla,lista[0],lista[1],LugarARevisar,ficha)
-                        if(CondicionCumplida == True):
-                            return CondicionCumplida # el movimiento es legal
+               
+                    lista[0]= x-1
+                    lista[1] =y 
+                    LugarARevisar = 7
+                    CondicionCumplida= self.EncontrarFichaAmiga(tabla,lista[0],lista[1],LugarARevisar,ficha)
+                    if(CondicionCumplida == True):
+                        return CondicionCumplida # el movimiento es legal
                 if(tabla[y-1][x]  != ficha and tabla[y-1][x] != 0): #arriba --------------------------
-                        lista[0] = x
-                        lista[1] = y-1
-                        LugarARevisar =5
-                        CondicionCumplida= self.EncontrarFichaAmiga(tabla,lista[0],lista[1],LugarARevisar,ficha)
-                        if(CondicionCumplida == True):
-                            return CondicionCumplida # el movimiento es lega
+              
+                    lista[0] = x
+                    lista[1] = y-1
+                    LugarARevisar =5
+                    CondicionCumplida= self.EncontrarFichaAmiga(tabla,lista[0],lista[1],LugarARevisar,ficha)
+                    if(CondicionCumplida == True):
+                        return CondicionCumplida # el movimiento es lega
                 if(tabla[y+1][x]  != ficha and tabla[y+1][x] != 0): #abajo --------------------------------------------------
-                        lista[0]= x
-                        lista[1] =y+1 
-                        LugarARevisar = 6
-                        CondicionCumplida= self.EncontrarFichaAmiga(tabla,lista[0],lista[1],LugarARevisar,ficha)
-                        if(CondicionCumplida == True):
-                            return CondicionCumplida # el movimiento es legal
+          
+                    lista[0]= x
+                    lista[1] =y+1 
+                    LugarARevisar = 6
+                    CondicionCumplida= self.EncontrarFichaAmiga(tabla,lista[0],lista[1],LugarARevisar,ficha)
+                    if(CondicionCumplida == True):
+                        return CondicionCumplida # el movimiento es legal
                 if(tabla[y-1][x+1]  != ficha and tabla[y-1][x+1] != 0): # diagonal arriba derecha -----------------------------------
-                        lista[0]= x+1 
-                        lista[1] =y-1 
-                        LugarARevisar = 3
-                        CondicionCumplida= self.EncontrarFichaAmiga(tabla,lista[0],lista[1],LugarARevisar,ficha)
-                        if(CondicionCumplida == True):
-                            return CondicionCumplida # el movimiento es legal
-                if(tabla[y][x+1]  != ficha and tabla[x+1][y] != 0): #derecha -----------------------------
-                        lista[0]= x+1 
-                        lista[1] =y 
-                        LugarARevisar = 8 
-                        CondicionCumplida= self.EncontrarFichaAmiga(tabla,lista[0],lista[1],LugarARevisar,ficha)
-                        if(CondicionCumplida == True):
-                            return CondicionCumplida # el movimiento es legal
+         
+                    lista[0]= x+1 
+                    lista[1] =y-1 
+                    LugarARevisar = 3
+                    CondicionCumplida= self.EncontrarFichaAmiga(tabla,lista[0],lista[1],LugarARevisar,ficha)
+                    if(CondicionCumplida == True):
+         
+                        return CondicionCumplida # el movimiento es legal
+                if(tabla[y][x+1]  != ficha and tabla[y][x+1] != 0): #derecha -----------------------------
+
+                    lista[0]= x+1 
+                    lista[1] =y 
+                    LugarARevisar = 8 
+                    print("VALOR CONDIOCION1: ", CondicionCumplida)
+                    CondicionCumplida= self.EncontrarFichaAmiga(tabla,lista[0],lista[1],LugarARevisar,ficha)
+                    print("VALOR CONDIOCION2: ", CondicionCumplida)
+                    if(CondicionCumplida == True):
+                        return CondicionCumplida # el movimiento es legal
                 if(tabla[y+1][x+1]  != ficha and tabla[y+1][x+1] != 0): #diagonal abajo derecha --------------------------
-                        lista[0]= x+1
-                        lista[1] =y+1 
-                        LugarARevisar = 2
-                        CondicionCumplida= self.EncontrarFichaAmiga(tabla,lista[0],lista[1],LugarARevisar,ficha)
-                        if(CondicionCumplida == True):
-                            return CondicionCumplida # el movimiento es legal
+
+                    lista[0]= x+1
+                    lista[1] =y+1 
+                    LugarARevisar = 2
+                    CondicionCumplida= self.EncontrarFichaAmiga(tabla,lista[0],lista[1],LugarARevisar,ficha)
+                    print(CondicionCumplida)
+                    if(CondicionCumplida == True):
+
+                        return CondicionCumplida # el movimiento es legal
             return CondicionCumplida   
 
 
@@ -343,9 +361,9 @@ class Reversi:
         case2 = y
         MovimientoLegal = False
         if(LugarARevisar == 1 ): #diagonal izquierda arriba ----------------------------
-            while(case1>= 0 and case2 >= 0):
+            while(case1> 0 and case2 > 0):
                 if(tabla[case2][case1] == ficha ):
-                    MovimientoLegal == True
+                    MovimientoLegal = True
                     return MovimientoLegal
                 else:
                     case1-=1
@@ -355,8 +373,11 @@ class Reversi:
 
         if(LugarARevisar ==2 ): #diagonal abajo derecha ---------------------------------
             while(case1 < 5 and case2 <5):
+ 
                 if(tabla[case2][case1] == ficha ):
-                    MovimientoLegal == True
+
+                    MovimientoLegal = True
+                    print(MovimientoLegal)
                     return MovimientoLegal
                 else:
                     case1+=1
@@ -365,7 +386,7 @@ class Reversi:
         case2 =y
 
         if(LugarARevisar ==3 ): #diagonal arriba derecha ---------------------------------
-            while(case1 <5 and case2 >0):
+            while(case1 < 5 and case2 > 0):
                 if(tabla[case2][case1]== ficha):
                     MovimientoLegal = True 
                     return MovimientoLegal
@@ -378,7 +399,7 @@ class Reversi:
 
 
         if(LugarARevisar ==4 ): #diagonal abajo izquierda ---------------------------------
-           while(case1 > 5 and case2 < 0):
+           while(case1 > 0 and case2 < 5):
                 if(tabla[case2][case1]== ficha):
                     MovimientoLegal = True 
                     return MovimientoLegal
@@ -511,10 +532,10 @@ class Reversi:
                     i+=1
             x_temp = columna
             i = columna-1
-            while(i>0):
+            while(i>=0):
                 if(self.tablero[constante][i] == 0):
                     break
-                if(self.tablero[constante][i]==1):
+                if(self.tablero[constante][i]==2):
                     x_variable = i
                     y_variable = constante
                     while(x_temp > x_variable):
@@ -530,271 +551,273 @@ class Reversi:
         return self.tablero
     
 
-    def fill_row(self,x,y):
-        print("2")
-        lista=[0,0,0,0]
-        dimencion = len(self.tablero)
-        print("RANGOS UTILIZADOS: dimencion, x y ",dimencion,x,y)
-
-        cont_row = 0
-        constante = x
-        findit1 = 0
-        findit2 = 0
-        print("____________________ENTRE A FILA _____________________")
+    def fill_row(self,columna,fila):
+        constante = columna
         if(self.player==1):
-            print("____________________INICIANDO ¨FOR _____________________")
-            for i in range(dimencion):
-                
-                if(self.tablero[constante][i]==1 and findit1 < 1):
-                    print("constante y i : ",constante,i)
-                    lista[0] = constante
-                    lista[1] = i
-                    findit1+=1
-                    print("lista 0, lista 1, findit1",lista[0],lista[1],findit1)
-                if(self.tablero[constante][i]==1 and findit1 < 2 and (self.tablero[constante][i-1]!=0)):
-                    print("constante y i : ",constante,i)
-                    lista[2] = constante
-                    lista[3] = i
-                    findit1+=1
-                    cont_row+=1
-                    print("lista 0, lista 1, findit1",lista[0],lista[1],findit1)
-                if(self.tablero[constante][i]==1 and findit1 > 1 and (self.tablero[constante][i-1]!=0)):
-                    print("constante y i : ",constante,i)
-                    lista[2] = constante
-                    lista[3] = i
-                    findit1+=1
-                    cont_row+=1
-                    print("lista 0, lista 1, findit1",lista[0],lista[1],findit1)
-                    if(findit1>1):
-                        x_variable = lista[0]
-                        y_variable = lista[1]
-                        x1 = lista[2]
-                        y1 = lista[3]
-                        print("LISTA QUE ESTA REVISANDO",x_variable,y_variable,x1,y1)
-                        while(y_variable <= y1):
-                            self.tablero[x_variable][y_variable] = 1
-                            print("dato 1 tablero: ",self.tablero[y_variable][x_variable])
-                            self.__setitem__(x_variable,y_variable,1)
-                            y_variable+=1
-            lista =[0,0,0,0]
-        if(self.player==2):
-            print("____________________INICIANDO ¨FOR _____________________")
-            for i in range(dimencion):
-                
-                if(self.tablero[constante][i]==2 and findit2 < 1):
-                    print("constante y i : ",constante,i)
-                    lista[0] = constante
-                    lista[1] = i
-                    findit2+=1
-                    print("lista 0, lista 1, findit2",lista[0],lista[1],findit2)
-                if(self.tablero[constante][i]==2 and findit2 < 2 and (self.tablero[constante][i-1]!=0)):
-                    print("constante y i : ",constante,i)
-                    lista[2] = constante
-                    lista[3] = i
-                    findit2+=1
-                    print("lista 0, lista 1, findit2",lista[0],lista[1],findit2)
-                    cont_row+=1
-                if(self.tablero[constante][i]==2 and findit2 > 1 and (self.tablero[constante][i-1]!=0)):
-                    print("constante y i : ",constante,i)
-                    lista[2] = constante
-                    lista[3] = i
-                    findit2+=1
-                    cont_row+=1
-                    print("lista 0, lista 1, findit2",lista[0],lista[1],findit2)
-                    if(findit2>1):
-                        x_variable = lista[0]
-                        y_variable = lista[1]
-                        x1 = lista[2]
-                        y1 = lista[3]
-                        print("LISTA QUE ESTA REVISANDO",x_variable,y_variable,x1,y1)
-                        while(y_variable <= y1):
-                            
-                            self.tablero[x_variable][y_variable] = 2
+            y_temp = fila
+            i=fila+1
+            #derecha se le suma 1 a las filas 
+            while(i<5): #revisando las fllas a la derecha del movimiento del jugador 
+                if(self.tablero[i][constante] == 0):
+                    break
+                if(self.tablero[i][constante]==1):
+                    x_variable = constante
+                    y_variable = i
 
-
-                            self.__setitem__(x_variable,y_variable,2)
-                            print("dato 2  tablero: ",self.tablero[y_variable][x_variable])
-                            y_variable+=1
-            lista =[0,0,0,0]
-        
-        self.tablero = self.fill_diag_sup(x,y)
-        print("____________________SALI DE FILA _____________________")
-        return self.tablero
-        
-        
-    
-    def fill_diag_sup(self,x,y):
-        print("3")
-        lista=[0,0,0,0]
-        dimencion = len(self.tablero)
-        print("RANGOS UTILIZADOS: dimencion, x y ",dimencion,x,y)
-        cont_diag = 0
-        case1 = x
-        case2 = y
-        review = 1
-        findit1 = 0
-        findit2 = 0
-        if(self.player==1):
-            if(review==1): #Superior izquierda
-                while(case1>=0 and case2>=0):
-                    case1-=1
-                    case2-=1
-                while(case1 <= 5 and case2 <=5):
-                    if(self.tablero[case1][case2]==1 and findit1<1):
-                        lista[0] = case1
-                        lista[1] = case2
-                        findit1+=1
-                    if(self.tablero[case1][case2]==1 and findit1 < 2 and (self.tablero[case1-1][case2-1]!=0)):
-                        lista[2] = case1
-                        lista[3] = case2
-                        findit1+=1
-                    if(self.tablero[case1][case2]==1 and findit1 > 1 and (self.tablero[case1-1][case2-1]!=0)):
-                        lista[2] = case1
-                        lista[3] = case2
-                        findit1+=1
-                        if(findit1>1):
-                            x_variable = lista[0]
-                            y_variable = lista[1]
-                            x1 = lista[2]
-                            y1 = lista[3]
-                            print("LISTA QUE ESTA REVISANDO",x_variable,y_variable,x1,y1)
-                            while(x_variable<=x1 and y_variable<=y1):
-                                self.tablero[x_variable][y_variable]=1
-                                print("dato 1 tablero: ",self.tablero[y_variable][x_variable])
-                                self.__setitem__(x_variable,y_variable,1)
-                                y_variable+=1
-                                x_variable+=1
-                    case1+=1
-                    case2+=1
+                    while(y_temp < y_variable):
+                        self.tablero[y_temp][x_variable] = 1
+                        self.__setitem__(y_temp,x_variable,1)
+                        print("dato 1 tablero: ",self.tablero[y_temp][x_variable])
+                        y_temp+=1
+                    break
+                if(self.tablero[i][constante] == 2):
+                    i+=1
+            y_temp = fila
+            i = fila-1
+            while(i>0):
+                if(self.tablero[i][constante] == 0):
+                    break
+                if(self.tablero[i][constante]==1):
+                    x_variable = constante
+                    y_variable = i
+                    while(y_temp > y_variable):
+                        self.tablero[y_variable][x_variable] = 1
+                        self.__setitem__(y_variable,x_variable,1)
+                        print("dato 1 tablero: ",self.tablero[y_variable][x_variable])
+                        y_variable+=1
+                    break
+                if(self.tablero[i][constante] == 2):
+                    i-=1
+        constante = columna
         if(self.player==2):
-            if(review==1): #Superior izquierda
-                while(case1>=0 and case2>=0):
-                    case1-=1
-                    case2-=1
-                while(case1 <= 5 and case2 <=5):
-                    if(self.tablero[case1][case2]==2 and findit2<1):
-                        lista[0] = case1
-                        lista[1] = case2
-                        findit2+=1
-                    if(self.tablero[case1][case2]==2 and findit2 < 2 and (self.tablero[case1-1][case2-1]!=0)):
-                        lista[2] = case1
-                        lista[3] = case2
-                        findit2+=1
-                    if(self.tablero[case1][case2]==2 and findit2 > 1 and (self.tablero[case1-1][case2-1]!=0)):
-                        lista[2] = case1
-                        lista[3] = case2
-                        findit2+=1
-                        if(findit2>1):
-                            x_variable = lista[0]
-                            y_variable = lista[1]
-                            x1 = lista[2]
-                            y1 = lista[3]
-                            print("LISTA QUE ESTA REVISANDO",x_variable,y_variable,x1,y1)
-                            while(x_variable<=x1 and y_variable<=y1):
-                                self.tablero[x_variable][y_variable]= 2
-                                self.__setitem__(x_variable,y_variable,2)
-                                print("dato 2 tablero: ",self.tablero[y_variable][x_variable])
-                                y_variable+=1
-                                x_variable+=1
-                    case1+=1
-                    case2+=1
-        self.tablero = self.fill_diag_sup2(x,y)
+            y_temp = fila
+            i=fila+1
+            #derecha se le suma 1 a las filas 
+            while(i<5): #revisando las fllas a la derecha del movimiento del jugador 
+                if(self.tablero[i][constante] == 0):
+                    break
+                if(self.tablero[i][constante]==2):
+                    x_variable = constante
+                    y_variable = i
+
+                    while(y_temp < y_variable):
+                        self.tablero[y_temp][x_variable] = 2
+                        self.__setitem__(y_temp,x_variable,2)
+                        print("dato 1 tablero: ",self.tablero[y_temp][x_variable])
+                        y_temp+=1
+                    break
+                if(self.tablero[i][constante] == 1):
+                    i+=1
+            y_temp = fila
+            i = fila-1
+            while(i>0):
+                if(self.tablero[i][constante] == 0):
+                    break
+                if(self.tablero[i][constante]==2):
+                    x_variable = constante
+                    y_variable = i
+                    while(y_temp > y_variable):
+                        self.tablero[y_variable][x_variable] = 2
+                        self.__setitem__(y_variable,x_variable,2)
+                        print("dato 1 tablero: ",self.tablero[y_variable][x_variable])
+                        y_variable+=1
+                    break
+                if(self.tablero[i][constante] == 1):
+                    i-=1
+        
+        self.tablero = self.fill_diag_sup(columna,fila)
+       
         return self.tablero
 
-    
-    def fill_diag_sup2(self,x,y):
-        print("4")
-        lista=[0,0,0,0]
-        dimencion = len(self.tablero)
-        print("RANGOS UTILIZADOS: dimencion, x y ",dimencion,x,y)
-        cont_diag = 0
-        case1 = x
-        case2 = y
-        review = 1
-        findit1 = 0
-        findit2 = 0
-        cont = 0
+
+    def fill_diag_sup(self,columna,fila):
         if(self.player==1):
-            print("pllegue a 1 ")
-            if(review==1): #Superior derecha
-                print("pllegue a 2 ")
-                print("primer case: ",case1,case2)
-                while(case1 >0 and case2 <5):
-                    print("dentro del while: ",case1,case2)
-                    case1= case1-1
-                    case2+=1
-                    cont+=1
-                while(case1 <=5 and case2 >=0):
-                    if(self.tablero[case2][case1]==1 and findit1< 1):
-                        lista[0] = case1
-                        lista[1] = case2
-                        findit1+=1
-                    if(self.tablero[case2][case1]==1 and findit1 < 2):
-                        lista[2] = case1
-                        lista[3] = case2
-                        findit1+=1
-                    if(self.tablero[case2][case1]==1 and findit1 > 1):
-                        lista[2] = case1
-                        lista[3] = case2
-                        findit1+=1
-                        if(findit1>1):
-                            x_variable = lista[0]
-                            y_variable = lista[1]
-                            x1 = lista[2]
-                            y1 = lista[3]
-                            print("LISTA QUE ESTA REVISANDO",x_variable,y_variable,x1,y1)
-                            print("pllegue a 3 ")
-                            while(x_variable<=x1 and y_variable>=1):
-                                self.tablero[y_variable][x_variable]=1
-                                print("dato 1 tablero: ",self.tablero[y_variable][x_variable])
-                                self.__setitem__(y_variable,x_variable,1)
-                                y_variable-=1
-                                x_variable+=1
-                    case1+=1
-                    case2-=1
-        print("sali")
+            y_temp2 = fila
+            x_temp2 = columna
+            
+            y_temp=fila-1
+            x_temp=columna+1
+            
+            while(y_temp >0 and x_temp < 5): #revisamos la diagonal arriba derecha
+                if(self.tablero[y_temp][x_temp] == 0):
+                        break
+                if(self.tablero[y_temp][x_temp]==1):
+                        x_variable = x_temp
+                        y_variable = y_temp
+
+                        while(x_temp2 < x_variable and y_temp2 > y_variable):
+                            self.tablero[y_temp2][x_temp2] = 1
+                            self.__setitem__(y_temp2,x_temp2,1)
+                            x_temp2+=1
+                            y_temp2-=1
+                        break 
+                if(self.tablero[y_temp][x_temp] == 2):
+                    y_temp-=1
+                    x_temp+=1
+            #revisamos la diagonal abajo izquierda
+            y_temp2 = fila
+            x_temp2 = columna
+            
+            y_temp = fila +1
+            x_temp = columna -1
+            while(y_temp < 5 and x_temp >0):
+                if(self.tablero[y_temp][x_temp] == 0):
+                        break
+                if(self.tablero[y_temp][x_temp]==1):
+                        x_variable = x_temp
+                        y_variable = y_temp
+
+                        while(x_temp2 > x_variable and y_temp2 < y_variable):
+                            self.tablero[y_temp2][x_temp2] = 1
+                            self.__setitem__(y_temp2,x_temp2,1)
+                            x_temp2-=1
+                            y_temp2+=1
+                        break 
+                if(self.tablero[y_temp][x_temp] == 2):
+                    y_temp+=1
+                    x_temp-=1
         if(self.player==2):
-            if(review==1): #Superior Izquierda
-                print("primer case: ",case1,case2)
-                while(case1 >0 and case2 <5):
-                    print("dentro del while: ",case1,case2)
-                    case1-=1
-                    case2+=1
-                    cont+=1
-                while(case1 <=5 and case2 >=0):
-                    if(self.tablero[case2][case1]==2 and findit2< 1):
-                        lista[0] = case1
-                        lista[1] = case2
-                        findit2+=1
-                        print("saliendo del primer if")
-                    if(self.tablero[case2][case1]==2 and findit2 < 2):
-                        lista[2] = case1
-                        lista[3] = case2
-                        findit2+=1
-                        print("saliendo del 2 if")
-                        print(findit2)
-                    if(self.tablero[case2][case1]==2 and findit2 > 1 ):
-                        lista[2] = case1
-                        lista[3] = case2
-                        findit2+=1
-                        print(findit2)
-                        if(findit2 > 1):
-                            x_variable = lista[0]
-                            y_variable = lista[1]
-                            x1 = lista[2]
-                            y1 = lista[3]
-                            print("LISTA QUE ESTA REVISANDO: el player2: ",x_variable,y_variable,x1,y1)
-                            while(x_variable<=x1 and y_variable>=y1):
-                                print("calculanding")
-                                
-                                self.tablero[y_variable][x_variable]= 2
-                                self.__setitem__(y_variable,x_variable,2)
-                                y_variable-=1
-                                x_variable+=1
-                                print("dato 2 tablero: ",self.tablero[y_variable][x_variable])
-                    case1+=1
-                    case2-=1
-            print("sali de player 2 ")
+            y_temp2 = fila
+            x_temp2 = columna
+            
+            y_temp=fila-1
+            x_temp=columna+1
+            
+            while(y_temp >0 and x_temp < 5): #revisamos la diagonal arriba derecha
+                if(self.tablero[y_temp][x_temp] == 0):
+                        break
+                if(self.tablero[y_temp][x_temp]==2):
+                        x_variable = x_temp
+                        y_variable = y_temp
+
+                        while(x_temp2 < x_variable and y_temp2 > y_variable):
+                            self.tablero[y_temp2][x_temp2] = 2
+                            self.__setitem__(y_temp2,x_temp2,2)
+                            x_temp2+=1
+                            y_temp2-=1
+                        break 
+                if(self.tablero[y_temp][x_temp] == 1):
+                    y_temp-=1
+                    x_temp+=1
+            #revisamos la diagonal abajo izquierda
+            y_temp2 = fila
+            x_temp2 = columna
+            
+            y_temp = fila +1
+            x_temp = columna -1
+            while(y_temp < 5 and x_temp >0):
+                if(self.tablero[y_temp][x_temp] == 0):
+                        break
+                if(self.tablero[y_temp][x_temp]==2):
+                        x_variable = x_temp
+                        y_variable = y_temp
+
+                        while(x_temp2 > x_variable and y_temp2 < y_variable):
+                            self.tablero[y_temp2][x_temp2] = 2
+                            self.__setitem__(y_temp2,x_temp2,2)
+                            x_temp2-=1
+                            y_temp2+=1
+                        break 
+                if(self.tablero[y_temp][x_temp] == 1):
+                    y_temp+=1
+                    x_temp-=1
+
+        self.tablero = self.fill_diag_sup2(columna,fila)
+        return self.tablero
+
+    
+    def fill_diag_sup2(self,columna,fila):
+        if(self.player==1):
+            y_temp2 = fila
+            x_temp2 = columna
+            
+            y_temp=fila+1
+            x_temp=columna+1
+            
+            while(y_temp <5 and x_temp < 5): #revisamos la diagonal abajo derecha
+                if(self.tablero[y_temp][x_temp] == 0):
+                        break
+                if(self.tablero[y_temp][x_temp]==1):
+                        x_variable = x_temp
+                        y_variable = y_temp
+
+                        while(x_temp2 < x_variable and y_temp2 < y_variable):
+                            self.tablero[y_temp2][x_temp2] = 1
+                            self.__setitem__(y_temp2,x_temp2,1)
+                            x_temp2+=1
+                            y_temp2+=1
+                        break 
+                if(self.tablero[y_temp][x_temp] == 2):
+                    y_temp+=1
+                    x_temp+=1
+            #revisamos la diagonal arriba izquierda
+            y_temp2 = fila
+            x_temp2 = columna
+            
+            y_temp = fila -1
+            x_temp = columna -1
+            while(y_temp >0 and x_temp >0):
+                if(self.tablero[y_temp][x_temp] == 0):
+                        break
+                if(self.tablero[y_temp][x_temp]==1):
+                        x_variable = x_temp
+                        y_variable = y_temp
+
+                        while(x_temp2 > x_variable and y_temp2 > y_variable):
+                            self.tablero[y_temp2][x_temp2] = 1
+                            self.__setitem__(y_temp2,x_temp2,1)
+                            x_temp2-=1
+                            y_temp2-=1
+                        break 
+                if(self.tablero[y_temp][x_temp] == 2):
+                    y_temp-=1
+                    x_temp-=1
+        if(self.player==2):
+            y_temp2 = fila
+            x_temp2 = columna
+            
+            y_temp=fila+1
+            x_temp=columna+1
+            
+            while(y_temp <5 and x_temp < 5): #revisamos la diagonal abajo derecha
+                if(self.tablero[y_temp][x_temp] == 0):
+                        break
+                if(self.tablero[y_temp][x_temp]==2):
+                        x_variable = x_temp
+                        y_variable = y_temp
+
+                        while(x_temp2 < x_variable and y_temp2 < y_variable):
+                            self.tablero[y_temp2][x_temp2] = 2
+                            self.__setitem__(y_temp2,x_temp2,2)
+                            x_temp2+=1
+                            y_temp2+=1
+                        break 
+                if(self.tablero[y_temp][x_temp] == 1):
+                    y_temp+=1
+                    x_temp+=1
+            #revisamos la diagonal arriba izquierda
+            y_temp2 = fila
+            x_temp2 = columna
+            
+            y_temp = fila -1
+            x_temp = columna -1
+            while(y_temp >0 and x_temp >0):
+                if(self.tablero[y_temp][x_temp] == 0):
+                        break
+                if(self.tablero[y_temp][x_temp]==2):
+                        x_variable = x_temp
+                        y_variable = y_temp
+
+                        while(x_temp2 > x_variable and y_temp2 > y_variable):
+                            self.tablero[y_temp2][x_temp2] = 2
+                            self.__setitem__(y_temp2,x_temp2,2)
+                            x_temp2-=1
+                            y_temp2-=1
+                        break 
+                if(self.tablero[y_temp][x_temp] == 1):
+                    y_temp-=1
+                    x_temp-=1
+
         return self.tablero
 
     
