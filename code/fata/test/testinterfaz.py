@@ -1,6 +1,7 @@
 from pygame.constants import CONTROLLER_AXIS_INVALID
 from reversi import Reversi
 import pygame
+import time
 import collections
 import sys
 
@@ -45,13 +46,15 @@ class Interfaz:
     def start_board(self):
         self.screen = pygame.display.set_mode(SIZE)
         pygame.init()
-        self.interfaz = pygame.image.load(r'C:\Users\crist\Desktop\Codes\SI_Tarea1_ICF222\src\img\Interfaz01.png').convert()
+        self.interfaz = pygame.image.load(r'D:\Universidad\Programacion\Sistemas_Inteligentes\Tareas\01\SI_Tarea1_ICF222\src\img\Interfaz01.png').convert()
         self.screen.fill(BACKGROUND)
         self.screen.blit(self.interfaz,[0,0])
         pygame.display.set_caption(TITLE)
-        self.recursos['negras'] = pygame.image.load(r'C:\Users\crist\Desktop\Codes\SI_Tarea1_ICF222\src\img\ficha_negra.png')
-        self.recursos['blancas'] = pygame.image.load(r'C:\Users\crist\Desktop\Codes\SI_Tarea1_ICF222\src\img\ficha_blanca.png')
-
+        self.recursos['negras'] = pygame.image.load(r'D:\Universidad\Programacion\Sistemas_Inteligentes\Tareas\01\SI_Tarea1_ICF222\src\img\ficha_negra.png')
+        self.recursos['blancas'] = pygame.image.load(r'D:\Universidad\Programacion\Sistemas_Inteligentes\Tareas\01\SI_Tarea1_ICF222\src\img\ficha_blanca.png')
+        self.recursos['win_negras'] = pygame.image.load(r'D:\Universidad\Programacion\Sistemas_Inteligentes\Tareas\01\SI_Tarea1_ICF222\src\img\negras_win.png')
+        self.recursos['win_blancas'] = pygame.image.load(r'D:\Universidad\Programacion\Sistemas_Inteligentes\Tareas\01\SI_Tarea1_ICF222\src\img\blancas_win.png')
+        self.recursos['empate'] = pygame.image.load(r'D:\Universidad\Programacion\Sistemas_Inteligentes\Tareas\01\SI_Tarea1_ICF222\src\img\empate.png')
         return True
     
     def juego_terminado(self):
@@ -138,7 +141,8 @@ class Interfaz:
                     y2=y2*70 + MARGEN + diferencia_y
                     print(f'B: {x2}, {y2}')
 
-                    self.screen.blit(self.recursos['negras'],[x2,y2])
+                    #self.screen.blit(self.recursos['negras'],[x2,y2])
+                    self.image_load('negras',[x2,y2])
                     self.reversi.fill_column(y,x)
                     imprimeTablero(self.reversi.tablero)
                     #self.reversi.place_piece(x,y)
@@ -164,7 +168,8 @@ class Interfaz:
 
                     print(f'N: {x2}, {y2}')
 
-                    self.screen.blit(self.recursos['blancas'],[x2,y2])
+                    #self.screen.blit(self.recursos['blancas'],[x2,y2])
+                    self.image_load('blancas',[x2,y2])
                     self.reversi.fill_column(y,x)
                     imprimeTablero(self.reversi.tablero)
                     #self.reversi.place_piece(x,y)
@@ -231,6 +236,19 @@ class Interfaz:
             pygame.display.flip()
             if(self.juego_terminado()):
                 print("JUEGO TERMINADO")
+                if(self.reversi.valor_blanca==self.reversi.valor_negra):
+                    print("EMPATE")
+                    self.image_load('empate',[30,100])
+                elif(self.reversi.valor_blanca>self.reversi.valor_negra):
+                    print("GANAN LOS BLANCOS")
+                    self.image_load('win_blancas',[30,100])
+                    pygame.display.flip()
+                elif(self.reversi.valor_blanca<self.reversi.valor_negra):
+                    print("GANAN LAS NEGRAS")
+                    self.image_load('win_negras',[30,100])
+                    pygame.display.flip()
+                    
+                time.sleep(5)
                 break
             self.clock.tick(120)
 
