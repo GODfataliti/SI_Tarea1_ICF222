@@ -40,6 +40,7 @@ class Interfaz:
         self.recursos = {}
         self.clock = pygame.time.Clock()
         self.reversi = Reversi()
+        self.dificultad = 0
         pass
 
 
@@ -75,12 +76,12 @@ class Interfaz:
         #COORD: FACIL ( 2,8 -> 3,8 )
         if(y==6 and 1<=x<=2):
             print("Facil")
-            dificultad = 1
+            self.dificultad = 1
             return self.new_game()
         #COORD: DIFICIL ( 4,8 -> 5,8 ) 
         if(y==6 and 3<=x<=4):
             print("dificil")
-            dificultad = 3
+            self.dificultad = 3
             return self.new_game()
 
     def image_load(self,color,pos):
