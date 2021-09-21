@@ -1,4 +1,3 @@
-from pygame.constants import CONTROLLER_AXIS_INVALID
 from reversi import Reversi
 import pygame
 import time
@@ -40,7 +39,6 @@ class Interfaz:
         self.recursos = {}
         self.clock = pygame.time.Clock()
         self.reversi = Reversi()
-        self.dificultad = 0
         pass
 
 
@@ -76,12 +74,12 @@ class Interfaz:
         #COORD: FACIL ( 2,8 -> 3,8 )
         if(y==6 and 1<=x<=2):
             print("Facil")
-            self.dificultad = 1
+            dificultad = 1
             return self.new_game()
         #COORD: DIFICIL ( 4,8 -> 5,8 ) 
         if(y==6 and 3<=x<=4):
             print("dificil")
-            self.dificultad = 3
+            dificultad = 3
             return self.new_game()
 
     def image_load(self,color,pos):
@@ -132,9 +130,12 @@ class Interfaz:
         x,y = pos[0], pos[1]
         x2,y2 = x,y
         try:
-            if player==1:
-                
-                        
+
+            if(x>5 or y>5):
+                return False
+
+
+            if player==1:  
                 if(x<0 or y<0 or x>5 or y>5 ):
                     print(f'Jugada Incorrecta.')
                     return False
